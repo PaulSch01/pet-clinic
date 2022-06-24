@@ -39,8 +39,7 @@ jobs:
   
     - name: Compile, build and push
       run: |
-        #### AUFGABE 3 DOCKER BUILD UND PUSH
-          heroku container:login # an dieser Stelle wird die Aufgabe 3 bearbeitet: heroku login, docker build, docker push
+          heroku container:login 
           mvn package
           docker build --tag registry.heroku.com/${pet-clinic-cooler}/web -f Dockerfile .
           docker push registry.heroku.com/${pet-clinic-cooler}/web
@@ -48,7 +47,6 @@ jobs:
     - name: Release
       run: |
         #### AUFGABE 4 DEPLOYMENT AUF HEROKU
-          # hier wird die 4. Aufgabe bearbeitet: Release der App auf Heroku
           heroku container:login
           heroku stack:set container --app ${pet-clinic-cooler}
           heroku container:release web --app ${pet-clinic-cooler}
